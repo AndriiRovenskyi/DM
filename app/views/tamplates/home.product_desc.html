@@ -1,0 +1,36 @@
+<div class="anim-fade">
+<section class="product-description-block" ng-if="prod.currentProduct">
+    <div class="container">
+        <div class="slider">
+            <div class="slider-block"><img class="slider-images" src="http://185.65.246.204:8081{{prod.currentProduct.img}}" alt=""></div>
+            <!--<div class="slider-block"><img class="slider-images" src=" images/slid2.jpg" alt=""></div>-->
+            <!--<div class="slider-block"><img class="slider-images" src=" images/slid3.jpg" alt=""></div>-->
+            <!--<div class="slider-block"><img class="slider-images" src=" images/slid4.jpg" alt=""></div>-->
+            <!--<div class="slider-block"><img class="slider-images" src=" images/slid5.jpg" alt=""></div>-->
+        </div>
+        <div class="product-description-info">
+            <div class="product-description-title">{{prod.currentProduct | translator:"nameCommodities"}}</div>
+            <div class="product-description-text">
+                <p ng-bind-html="prod.currentProduct | translator:'description'"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="line-box">
+    <div class="container">
+        <div class="line-dotted"></div>
+    </div>
+</section>
+
+<section class="other-product-block" ng-if="prod.similarProducts">
+    <div class="container">
+        <div class="product"  ng-repeat="product in prod.similarProducts" >
+            <a ui-sref="home.product({fireplaceId: product.id})" class="wrap-product" ng-click="scrollTop('anchor')">
+            <div class="other-product-categories-images"><img src="http://185.65.246.204:8081{{product.img}}" alt=""></div>
+            <div class="other-product-categories-title">{{product | translator:"nameCommodities"}}</div>
+            </a>
+        </div>
+    </div>
+</section>
+</div>

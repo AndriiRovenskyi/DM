@@ -1,0 +1,96 @@
+<div class="container products">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 offset-lg-1 offset-md-1">
+            <h2>Продукти<button type="button" class="btn btn-default btnRight"data-toggle="modal" data-target="#addProduct">Додати продукт</button></h2>
+            <div class="row">
+                <div class="col-lg-11 col-md-11 offset-lg-1 offset-md-1">
+                    <table>
+                        <tr>
+                            <th class="id" ng-click="sort='id'">id</th>
+                            <th ng-click="sort='category'">category</th>
+                            <th ng-click="sort='subcategory'">subcategory</th>
+                            <th ng-click="sort='name'">name</th>
+                            <th class="price" ng-click="sort='price'">price</th>
+                            <th>action</th>
+                        </tr>
+                        <tr ng-repeat="prodl in prod.products | orderBy:sort"">
+                            <td>{{prodl.id}}</td>
+                            <td>{{prodl.category}}</td>
+                            <td>{{prodl.subcategory}}</td>
+                            <td>{{prodl.name}}</td>
+                            <td>{{prodl.price}}</td>
+                            <td class="change"><input type="button" value="delete" ng-click="prod.deleteProduct(prodl)"><input data-toggle="modal" data-target="#editProduct" type="button" ng-click="prod.editProduct(prodl)" value="edit"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProduct" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Додати Продукт</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Категорія:</span>
+                    <select name="category" ng-model="prod.newProd.category">
+                        <option value={{categ.name}} ng-repeat="categ in prod.categories">{{categ.name}}</option>
+                    </select><br><br>
+                    <span>Підкатегорія:</span>
+                    <select name="subcategory" ng-model="prod.newProd.subcategory">
+                        <option value={{subcat.name}} ng-repeat="subcat in prod.subcategories">{{subcat.name}}</option>
+                    </select><br><br>
+                    <span>Ім’я Продукту:</span>
+                    <input type="text" ng-model="prod.newProd.name"><br><br>
+                    <span>Ціна Продукту:</span>
+                    <input type="text" ng-model="prod.newProd.price">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="prod.addProduct()" data-dismiss="modal">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editProduct" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Редагувати Продукт</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Категорія:</span>
+                    <select name="category" ng-model="prod.editProd.category">
+                        <option value={{categ.name}} ng-repeat="categ in prod.categories"> {{categ.name}}</option>
+                    </select><br><br>
+                    <span>Підкатегорія:</span>
+                    <select name="subcategory" ng-model="prod.editProd.subcategory">
+                        <option value={{subcat.name}} ng-repeat="subcat in prod.subcategories">{{subcat.name}}</option>
+                    </select><br><br>
+                    <span>Ім’я Продукту:</span>
+                    <input type="text" ng-model="prod.editProd.name"><br><br>
+                    <span>Ціна Продукту:</span>
+                    <input type="text" ng-model="prod.editProd.price">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="prod.saveChangeProd()" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

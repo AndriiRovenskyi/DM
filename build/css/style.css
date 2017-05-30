@@ -1,0 +1,410 @@
+.admin .header {
+    height: 80px;
+    border-bottom: 1px solid gray;
+}
+.admin .navig {
+    height: 600px;
+    /*background: lightgray;*/
+    /*border: 1px solid black;*/
+}
+.admin .admin_page {
+    /*width: 100vw;*/
+    height: 100vh;
+    background-color: black;
+    /*background-color: #f2f2f2;*/
+}
+.admin .in_nav a {
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    background: #e6e6e6;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 6px;
+    width: 180px;
+    color: black;
+    margin-top: 1px;
+}
+.admin .in_nav a:hover {
+    background: white;
+}
+.admin .in_nav {
+    margin-top: 100px;
+}
+.admin .icon1 {
+    background-image: url("../image/calendar.png");
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    margin: 5px 5px;
+    float: left;
+}
+.admin .icon2 {
+    background-image: url("../image/suitcase.png");
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    margin: 5px 5px;
+    float: left;
+}
+.admin .icon3 {
+    background-image: url("../image/add.png");
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    margin: 5px 5px;
+    float: left;
+}
+.admin .icon4 {
+    background-image: url("../image/list.png");
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    margin: 5px 5px;
+    float: left;
+}
+.admin .icon5 {
+    background-image: url("../image/add.png");
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    margin: 5px 5px;
+    float: left;
+}
+.admin .admin {
+    height: 60px;
+}
+.admin .img_admin {
+    margin-top: 6px;
+    margin-left: 4px;
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    background: lightgrey;
+}
+.admin .admin input {
+    margin-top: 3px;
+    font-size: 9pt;
+    border-radius: 10px;
+}
+
+.category h2 {
+    margin: 80px 30px 40px;
+    /*color: white;*/
+    border-bottom: 1px solid gray;
+}
+.category table th {
+    background: lightgrey;
+    height: 30px;
+    width: 80px;
+    border: 1px solid darkgray;
+    padding-left: 10px;
+}
+.category table {
+    width: 80%;
+}
+.category table td {
+    color: black;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    height: 40px;
+    font-size: 10pt;
+}
+.category .id {
+    width: 15% !important;
+}
+.category .name {
+    width: 60% !important;
+}
+.category input[value="delete"] {
+    background: red;
+    border-radius: 15px;
+    border: 1px solid darkred;
+    padding: 3px;
+    width: 50px;
+    color: white;
+    margin-right: 20px;
+}
+.category input[value="edit"] {
+    background: cornflowerblue;
+    border-radius: 15px;
+    border: 1px solid darkblue;
+    padding: 3px;
+    width: 50px;
+    color: white;
+}
+.category .btnRight{
+    float: right;
+    height: 35px;
+}
+
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signin a{
+    text-decoration: none;
+    color: white;
+}
+
+/*.order_zag{*/
+/*margin: 10% 0 30px 90px;*/
+/*}*/
+.orders table {
+    width: 100%;
+}
+.orders .table_arch {
+    background: lightgray;
+}
+.orders .tbl table {
+    /*color: white;*/
+}
+.orders .tbl table td {
+    font-size: 9pt;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+.orders h2 {
+    /*color: white;*/
+    border-bottom: 1px solid gray;
+    margin: 80px 0 30px 0;
+}
+.orders .tbl_zagolovok {
+    background-color: lightgray;
+    color: black;
+    height: 35px !important;
+}
+.orders .tbl .table_arch {
+    color: black;
+}
+.orders .tbl_ord th {
+    border: 1px solid black;
+    padding-left: 10px;
+    font-size: 11pt;
+}
+.orders .tbl_ord tr,
+.orders .tbl_arch td {
+    height: 60px;
+}
+.orders .done {
+    width: 8% !important;
+}
+.orders .num {
+    width: 8% !important;
+    text-align: center !important;
+}
+.orders .okay {
+    background-image: url("../image/done.svg");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin: 0 auto;
+}
+.orders .notDane {
+    background-image: url("../image/notDane.svg");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin: 0 auto;
+}
+.orders .change {
+    background-image: url("../image/change2.svg");
+    width: 30px !important;
+    height: 30px;
+    background-size: cover;
+    margin: 0 auto;
+}
+.orders .back {
+    background-image: url("../image/back.svg");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin: 0 auto;
+}
+.orders .amount {
+    width: 10% !important;
+    text-align: center !important;
+}
+.orders .done2 {
+    width: 10%;
+}
+
+.orders .btnRight{
+    float: right;
+    height: 35px;
+}
+
+
+.products h2 {
+    /*color: white;*/
+    border-bottom: 1px solid gray;
+    margin: 80px 0 30px 0;
+}
+.products table th {
+    background: lightgrey;
+    height: 30px;
+    width: 80px;
+    border: 1px solid darkgray;
+    padding-left: 10px;
+}
+.products table {
+    width: 100%;
+}
+.products table td {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    font-size: 10pt;
+}
+.products .id {
+    width: 10% !important;
+    text-align: center;
+}
+.products .price {
+    width: 15% !important;
+    text-align: center;
+}
+.products input[value="delete"] {
+    background: red;
+    border-radius: 15px;
+    border: 1px solid darkred;
+    padding: 3px;
+    width: 50px;
+    color: white;
+    margin-right: 20px;
+}
+.products input[value="edit"] {
+    background: cornflowerblue;
+    border-radius: 15px;
+    border: 1px solid darkblue;
+    padding: 3px;
+    width: 50px;
+    color: white;
+}
+.products .change {
+    width: 23% !important;
+}
+
+.products .btnRight{
+    float: right;
+    height: 35px;
+}
+
+.subCategory h2 {
+    /*color: white;*/
+    border-bottom: 1px solid gray;
+    margin: 80px 0 30px 0;
+}
+.subCategory table th {
+    background: lightgrey;
+    height: 30px;
+    width: 80px;
+    border: 1px solid darkgray;
+    padding-left: 10px;
+}
+.subCategory table {
+    width: 100%;
+}
+.subCategory table td {
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    height: 40px;
+    font-size: 10pt;
+}
+.subCategory .id {
+    width: 10% !important;
+    text-align: center;
+}
+.subCategory .price {
+    width: 15% !important;
+    text-align: center;
+}
+.subCategory input[value="delete"] {
+    background: red;
+    border-radius: 15px;
+    border: 1px solid darkred;
+    padding: 3px;
+    width: 50px;
+    color: white;
+    margin-right: 20px;
+}
+.subCategory input[value="edit"] {
+    background: cornflowerblue;
+    border-radius: 15px;
+    border: 1px solid darkblue;
+    padding: 3px;
+    width: 50px;
+    color: white;
+}
+.subCategory .change {
+    width: 23% !important;
+}
+.subCategory .btnRight{
+    float: right;
+    height: 35px;
+}
+
+.users h2 {
+    margin: 80px 0 40px;
+    /*color: white;*/
+    border-bottom: 1px solid gray;
+}
+.users table {
+    width: 100%;
+}
+.users table td {
+    border: 1px solid gray;
+    color: white;
+    font-size: 9pt;
+    padding-left: 10px;
+    height: 40px;
+}
+.users table th {
+    border: 1px solid black;
+    background: lightgray;
+    padding: 5px 10px;
+}
+.users table th:last-child {
+    width: 8%;
+    text-align: center;
+}
+.users .notDane {
+    background-image: url("../../image/notDane.svg");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin: 0 auto;
+}
+.users .btnRight{
+    float: right;
+    height: 35px;
+}

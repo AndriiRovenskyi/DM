@@ -1,0 +1,72 @@
+<div class="row orders">
+    <div class="col-lg-11 col-md-11 col-sm-11 offset-lg-1 offset-md-1 offset-sm-1 order_zag">
+        <h2>Замовлення</h2>
+    </div>
+    <div class="col-4"><input type="text" class="form-control " ng-model="searchText" placeholder="Search for..."></div>
+
+    <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-2 offset-md-1 offset-sm-1 table-responsive tbl">
+        <table class="tbl_ord">
+            <tr class="tbl_zagolovok">
+                <th class="num" ng-click="sort='id'">№</th>
+                <th ng-click="sort='user'">User</th>
+                <th ng-click="sort='date'">date</th>
+                <th ng-click="sort='order'">order</th>
+                <th class="amount" ng-click="sort='amount'">amount</th>
+                <th class="done">done</th>
+                <th class="done2">edit</th>
+            </tr>
+            <tr ng-repeat="order in ord.orders | orderBy:sort | filter:searchText">
+                <td class="num">{{order.id}}</td>
+                <td>{{order.user}}</td>
+                <td>{{order.date}}</td>
+                <td>{{order.order}}</td>
+                <td>{{order.amount}}</td>
+                <td><div class="okay" ng-click="ord.archiveOrder(order.id)"></div></td>
+                <td><div class="change"data-toggle="modal" data-target="#editOrder" ng-click="ord.changeOrder(order)"></div></td>
+            </tr>
+        </table>
+        <table class=" table_arch table-bordered tbl_arch">
+            <tr ng-repeat="order in ord.archive | filter:searchText">
+                <td class="num">{{order.id}}</td>
+                <td>{{order.user}}</td>
+                <td>{{order.date}}</td>
+                <td>{{order.order}}</td>
+                <td>{{order.amount}}</td>
+                <td class="done"><div class="back" ng-click="ord.archiveBack(order.id)"></div></td>
+                <td class="done2"><div class="notDane" ng-click="ord.deleteOrder(order.id)"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal fade" id="editOrder" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Редагувати замовлення</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Клієнт:</span>
+                    <input type="text" ng-model="ord.editOrd.user"><br><br>
+                    <span>Дата:</span>
+                    <input type="text" ng-model="ord.editOrd.date"><br><br>
+                    <span>Замовлення:</span>
+                    <input type="text" ng-model="ord.editOrd.order"><br><br>
+                    <span>Сума:</span>
+                    <input type="text" ng-model="ord.editOrd.amount">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="ord.saveChangeOrder()"
+                            data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

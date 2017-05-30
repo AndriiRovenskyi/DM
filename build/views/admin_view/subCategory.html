@@ -1,0 +1,78 @@
+<div class="container subCategory">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 offset-lg-1 offset-md-1">
+            <h2>Підкатегорії<button type="button" class="btn btn-default btnRight" data-toggle="modal" data-target="#addSubcategory">Додати підкатегорію</button></h2>
+            <div class="row">
+                <div class="col-lg-11 col-md-11 offset-lg-1 offset-md-1">
+                    <table>
+                        <tr>
+                            <th class="id" ng-click="sort='id'">id</th>
+                            <th ng-click="sort='category'">category</th>
+                            <th ng-click="sort='name'">Subcategory</th>
+                            <th>action</th>
+                        </tr>
+                        <tr ng-repeat="subcat in sub.subcategories | orderBy:sort">
+                            <td>{{subcat.id}}</td>
+                            <td>{{subcat.category}}</td>
+                            <td>{{subcat.name}}</td>
+                            <td class="change"><input type="button" value="delete" ng-click="sub.deleteSubcategory(subcat.id)">
+                                <input type="button" value="edit" data-toggle="modal" ng-click="sub.changeSubcategory(subcat)" data-target="#editSubcategory"></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addSubcategory" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Додати підкатегорію</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Категорія:</span>
+                    <select name="category" ng-model="sub.newSubcategory.category">
+                        <option value={{categ.name}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
+                    </select><br><br>
+                    <span>Ім’я підкатегорії:</span><input type="text" ng-model="sub.newSubcategory.name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="sub.addSubcategory()" data-dismiss="modal">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="editSubcategory" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Змінити підкатегорію</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Категорія:</span>
+                    <select name="category" ng-model="sub.editSubcat.category">
+                        <option value={{categ.name}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
+                    </select><br><br>
+                    <span>Ім’я підкатегорії:</span><input type="text" ng-model="sub.editSubcat.name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="sub.changeSave()" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

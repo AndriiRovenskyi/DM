@@ -1,0 +1,28 @@
+<div class="container-fluid admin_page admin">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 header">
+            <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-2 offset-lg-11 offset-md-11 offset-sm10 admin">
+                    <div class="img_admin">
+                    </div>
+                   <a ui-sref="login"><input type='button' value="log Out"></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 navig">
+            <div class="in_nav">
+                <a ui-sref=".orders"><div class="icon1"></div>
+                    Замовлення</a>
+                <!--<a ui-sref=".users"><div class="icon2"></div>Користувачі</a>-->
+                <a ui-sref=".category"><div class="icon3"></div>Категорії</a>
+                <a ui-sref=".subCategory"><div class="icon4"></div>Підкатегорії</a>
+                <a ui-sref=".products"><div class="icon5"></div>Продукти</a>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-8  col-sm-7 lol">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>
+

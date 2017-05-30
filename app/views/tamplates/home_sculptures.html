@@ -1,0 +1,12 @@
+<div class="anim-fade">
+<section class="product-block">
+    <div class="container">
+        <div class="product" ng-repeat="product in scul.products | filter: scul.filterProducts" >
+            <a ui-sref="home.product({fireplaceId: product.id})" class="wrap-product" ng-click="scrollTop('anchor')">
+            <div class="main-categories-images"><img class="img" src="http://185.65.246.204:8081{{product.img}}" alt=""></div>
+            <div class="product-categories-title">{{product | translator:"nameCommodities"}}</div>
+            </a>
+        </div>
+    </div>
+</section>
+</div>

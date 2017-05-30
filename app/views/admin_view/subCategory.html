@@ -1,0 +1,300 @@
+<div class="subCategory">
+
+    <h2>Підкатегорії
+        <button type="button" class="btn btn-default btnRight btn-material btn-material_warring"
+                data-toggle="modal" data-target="#addSubcategory">Додати підкатегорію
+        </button>
+    </h2>
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+        <tr>
+            <th class="id" ng-click="sort='id'">ID</th>
+            <!--<th ng-click="sort='category'">Категорія</th>-->
+            <th ng-click="sort='name'">Назва UA</th>
+            <th ng-click="sort='name'">Назва EN</th>
+            <th ng-click="sort='name'">Назва PL</th>
+            <th ng-click="sort='name'">Зображення</th>
+            <th ng-click="sort='name'">ID Категорії</th>
+            <th>Видалити</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="subcat in sub.subcategories | filter: sub.withOut">
+            <td>{{subcat.id}}</td>
+            <!--<td>{{subcat.category}}</td>-->
+            <td>{{subcat.nameSubUa}}</td>
+            <td>{{subcat.nameSubEng}}</td>
+            <td>{{subcat.nameSubPl}}</td>
+            <td><img src="http://185.65.246.204:8081{{subcat.img}}" alt=""></td>
+            <td>{{subcat.id_cat}}</td>
+            <td>
+
+                <button class="btn-material btn-material_danger"
+                        ng-click="sub.deleteSubcategory(subcat.id)" type="button"><span>Видалити</span>
+                </button>
+                <!--<button class="btn-material btn-material_warring" data-toggle="modal"-->
+                <!--ng-click="sub.changeSubcategory(subcat)" data-target="#editSubcategory"-->
+                <!--type="button"><span>Редагувати</span></button>-->
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addSubcategory" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Додати підкатегорію</h4>
+    </div>
+    <div class="modal-body">
+    <span>Категорія:</span>
+    <select name="category" ng-model="sub.newSubcategory.id_cat">
+    <option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
+    </select><br><br>
+
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubUa" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubUa:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubEng" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubEng:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubPl" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubPl:</label>
+    </div>
+    <div class="group">
+    <!--<label>Ім’я підкатегорії img:</label>-->
+    <input class="input-material" type="file" ng-model="sub.img" base-sixty-four-input required>
+    <!--<span class="highlight"></span>-->
+    <!--<span class="bar"></span>-->
+    </div>
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn-material" ng-click="sub.addSubcategory()" data-dismiss="modal">
+    <span>Add</span></button>
+    <button type="button" class="btn-material btn-material_danger" data-dismiss="modal">
+    <span>Закрити</span></button>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="modal fade" id="editSubcategory" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Змінити підкатегорію</h4>
+    </div>
+    <div class="modal-body">
+    <span>Категорія:</span>
+    <select name="category" ng-model="sub.editSubcat.id_cat">
+    <option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
+    </select><br><br>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.editSubcat.nameSubUa" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubUa:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.editSubcat.nameSubEng" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubEng:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.editSubcat.nameSubPl" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubPl:</label>
+    </div>
+    <div class="group">
+    <!--<label>Ім’я підкатегорії img:</label>-->
+    <input class="input-material" type="file" ng-model="sub.editImg" base-sixty-four-input required>
+    <!--<span class="highlight"></span>-->
+    <!--<span class="bar"></span>-->
+    </div>
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn-material" ng-click="sub.changeSave()" data-dismiss="modal">
+    <span>Ok</span></button>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+<!--<div class="container-fluid subCategory">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-12 col-md-12 ">-->
+<!--<h2>Підкатегорії-->
+<!--<button type="button" class="btn btn-default btnRight btn-material btn-material_warring"-->
+<!--data-toggle="modal" data-target="#addSubcategory">Додати підкатегорію-->
+<!--</button>-->
+<!--</h2>-->
+<!--<div class="row">-->
+<!--<div class="col">-->
+<!--<table class="table table-hover table-striped">-->
+<!--<thead class="thead-inverse">-->
+<!--<tr>-->
+<!--<th class="id" ng-click="sort='id'">ID</th>-->
+<!--<th ng-click="sort='category'">Категорія</th>-->
+<!--<th ng-click="sort='name'">Назва UA</th>-->
+<!--<th ng-click="sort='name'">Назва EN</th>-->
+<!--<th ng-click="sort='name'">Назва PL</th>-->
+<!--<th ng-click="sort='name'">Зображення</th>-->
+<!--<th ng-click="sort='name'">ID Категорії</th>-->
+<!--<th>Видалити</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr ng-repeat="subcat in sub.subcategories">-->
+<!--<td>{{subcat.id}}</td>-->
+<!--<td>{{subcat.category}}</td>-->
+<!--<td>{{subcat.nameSubUa}}</td>-->
+<!--<td>{{subcat.nameSubEng}}</td>-->
+<!--<td>{{subcat.nameSubPl}}</td>-->
+<!--<td><img src="http://185.65.246.204:8081{{subcat.img}}" alt=""></td>-->
+<!--<td>{{subcat.id_cat}}</td>-->
+<!--<td>-->
+
+<!--<button class="btn-material btn-material_danger"-->
+<!--ng-click="sub.deleteSubcategory(subcat.id)" type="button"><span>Видалити</span>-->
+<!--</button>-->
+<!--&lt;!&ndash;<button class="btn-material btn-material_warring" data-toggle="modal"&ndash;&gt;-->
+<!--&lt;!&ndash;ng-click="sub.changeSubcategory(subcat)" data-target="#editSubcategory"&ndash;&gt;-->
+<!--&lt;!&ndash;type="button"><span>Редагувати</span></button>&ndash;&gt;-->
+
+
+<!--</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="addSubcategory" role="dialog">-->
+<!--<div class="modal-dialog">-->
+
+<!--&lt;!&ndash; Modal content&ndash;&gt;-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--<h4 class="modal-title">Додати підкатегорію</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<span>Категорія:</span>-->
+<!--<select name="category" ng-model="sub.newSubcategory.id_cat">-->
+<!--<option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>-->
+<!--</select><br><br>-->
+
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubUa" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubEng" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubPl" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubPl:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--&lt;!&ndash;<label>Ім’я підкатегорії img:</label>&ndash;&gt;-->
+<!--<input class="input-material" type="file" ng-model="sub.img" base-sixty-four-input required>-->
+<!--&lt;!&ndash;<span class="highlight"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="bar"></span>&ndash;&gt;-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn-material" ng-click="sub.addSubcategory()" data-dismiss="modal">-->
+<!--<span>Add</span></button>-->
+<!--<button type="button" class="btn-material btn-material_danger" data-dismiss="modal">-->
+<!--<span>Закрити</span></button>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="modal fade" id="editSubcategory" role="dialog">-->
+<!--<div class="modal-dialog">-->
+
+<!--&lt;!&ndash; Modal content&ndash;&gt;-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--<h4 class="modal-title">Змінити підкатегорію</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<span>Категорія:</span>-->
+<!--<select name="category" ng-model="sub.editSubcat.id_cat">-->
+<!--<option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>-->
+<!--</select><br><br>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.editSubcat.nameSubUa" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.editSubcat.nameSubEng" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="sub.editSubcat.nameSubPl" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я підкатегорії nameSubPl:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--&lt;!&ndash;<label>Ім’я підкатегорії img:</label>&ndash;&gt;-->
+<!--<input class="input-material" type="file" ng-model="sub.editImg" base-sixty-four-input required>-->
+<!--&lt;!&ndash;<span class="highlight"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="bar"></span>&ndash;&gt;-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn-material" ng-click="sub.changeSave()" data-dismiss="modal">-->
+<!--<span>Ok</span></button>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->

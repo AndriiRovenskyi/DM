@@ -1,0 +1,444 @@
+<div class="category">
+
+    <h2>Новини
+        <button type="button" class="btn btn-default btnRight btn-material btn-material_warring" data-toggle="modal"
+                data-target="#addNew">Додати Новину
+        </button>
+    </h2>
+
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+        <tr>
+        <th>ID</th>
+        <th>Зображення</th>
+        <th>Заголовок UA</th>
+        <th>Заголовок PL</th>
+        <th>Заголовок EN</th>
+        <th> Опис UA</th>
+        <th> Опис PL</th>
+        <th> Опис EN</th>
+        <th>Видалити</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="new in news.newies1">
+        <td>{{new.id}}</td>
+        <td><img ng-src="http://185.65.246.204:8081{{new.img}}" alt=""></td>
+        <td>{{new.nameNewUa}}</td>
+        <td>{{new.nameNewPl}}</td>
+        <td>{{new.nameNewEng}}</td>
+            <td ng-bind-html="new.descriptionUa"></td>
+            <td ng-bind-html="new.descriptionEng"></td>
+            <td ng-bind-html="new.descriptionPl"></td>
+        <td>
+        <button class="btn-material btn-material_danger" ng-click="news.deleteNews(new.id)"
+        type="button"><span>Видалити</span></button>
+        <!--<button class="btn-material btn-material_warring" ng-click="news.newiesChange(new)"-->
+        <!--&lt;!&ndash;data-toggle="modal" data-target="#editNew" type="button"><span>Редагувати</span>&ndash;&gt;-->
+        <!--</button>-->
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addNew" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Додати новину</h4>
+    </div>
+    <div class="modal-body">
+    <div class="group">
+    <input class="input-material" type="file" ng-model="news.image" base-sixty-four-input required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.newNews.nameNewUa" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок UA:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.newNews.nameNewPl" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок PL:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.newNews.nameNewEng" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок EN:</label>
+    </div>
+    <div class="group">
+
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис UA:</label>
+        <div text-angular ng-model="news.newNews.descriptionUa"></div>
+    </div>
+    <div class="group">
+
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис PL:</label>
+        <div text-angular ng-model="news.newNews.descriptionPl"></div>
+    </div>
+    <div class="group">
+
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис EN:</label>
+        <div text-angular ng-model="news.newNews.descriptionEng"></div>
+    </div>
+    </div>
+    <div class="modal-footer">
+
+    <button type="button" class="btn-material" ng-click="news.addNew(news.newNews.image)" data-dismiss="modal"><span>Додати</span>
+    </button>
+    <button type="button" class="btn-material btn-material_danger" data-dismiss="modal">
+    <span>Закрити</span></button>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    <div class="modal fade" id="editNew" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Змінити новину</h4>
+    </div>
+    <div class="modal-body">
+    <div class="group">
+    <input class="input-material" type="file" ng-model="news.editImage" base-sixty-four-input required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Зображення:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.editNews.nameNewUa" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок UA:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.editNews.nameNewPl" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок PL:</label>
+    </div>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="news.editNews.nameNewEng" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Заголовок EN:</label>
+    </div>
+    <div class="group">
+    <textarea class="input-material" type="text" ng-model="news.editNews.descriptionUa"
+    required></textarea>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис UA:</label>
+    </div>
+    <div class="group">
+    <textarea class="input-material" type="text" ng-model="news.editNews.descriptionPl"
+    required></textarea>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис PL:</label>
+    </div>
+    <div class="group">
+    <textarea class="input-material" type="text" ng-model="news.editNews.descriptionEng"
+    required></textarea>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Опис EN:</label>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn-material" ng-click="news.changeNews()" data-dismiss="modal"><span>Зберегти</span>
+    </button>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+
+    <!--<div class="modal fade" id="addNew" role="dialog">-->
+        <!--<div class="modal-dialog">-->
+
+            <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <!--<h4 class="modal-title"></h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.newNews.image" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Зображення:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.newNews.title" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.newNews.description"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис:</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+
+                    <!--<button type="button" class="btn-material" ng-click="news.addNew()" data-dismiss="modal"><span>Додати</span>-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn-material btn-material_danger" data-dismiss="modal">-->
+                        <!--<span>Закрити</span></button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="modal fade" id="editNew" role="dialog">-->
+        <!--<div class="modal-dialog">-->
+            <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <!--<h4 class="modal-title"></h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.editNews.image" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Зображення:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.editNews.title" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.editNews.description"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис:</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn-material" ng-click="news.changeNews()" data-dismiss="modal"><span>Зберегти</span>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
+<!--</div>-->
+
+<!--<div class="container-fluid">-->
+<!--<div class="row category">-->
+    <!--<div class="col-lg-12 col-md-12">-->
+        <!--<h2>Новинни-->
+            <!--<button type="button" class="btn btn-default btnRight btn-material btn-material_warring" data-toggle="modal"-->
+                    <!--data-target="#addNew">Додати Новину-->
+            <!--</button>-->
+        <!--</h2>-->
+        <!--<div class="row">-->
+            <!--<div class="col">-->
+                <!--<table class="table table-hover able-striped">-->
+                    <!--<thead class="thead-inverse">-->
+                    <!--<tr>-->
+                        <!--&lt;!&ndash;<th class="id" ng-click="sort='id'">ID</th>&ndash;&gt;-->
+                        <!--<th>Зображення</th>-->
+                        <!--<th>Заголовок UA</th>-->
+                        <!--<th>Заголовок PL</th>-->
+                        <!--<th>Заголовок EN</th>-->
+                        <!--<th> Опис UA</th>-->
+                        <!--<th> Опис PL</th>-->
+                        <!--<th> Опис EN</th>-->
+                        <!--<th>Видалити</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr ng-repeat="new in news.newies1">-->
+                        <!--&lt;!&ndash;<td>{{new.id}}</td>&ndash;&gt;-->
+                        <!--<td><img ng-src="http://185.65.246.204:8081{{new.img}}" alt=""></td>-->
+                        <!--<td>{{new.nameNewUa}}</td>-->
+                        <!--<td>{{new.nameNewPl}}</td>-->
+                        <!--<td>{{new.nameNewEng}}</td>-->
+                        <!--<td>{{new.descriptionUa}}</td>-->
+                        <!--<td>{{new.descriptionPl}}</td>-->
+                        <!--<td>{{new.descriptionEng}}</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn-material btn-material_danger" ng-click="news.deleteNews(new.id)"-->
+                                    <!--type="button"><span>Видалити</span></button>-->
+                            <!--<button class="btn-material btn-material_warring" ng-click="news.newiesChange(new)"-->
+                                    <!--&lt;!&ndash;data-toggle="modal" data-target="#editNew" type="button"><span>Редагувати</span>&ndash;&gt;-->
+                            <!--</button>-->
+
+
+                            <!--&lt;!&ndash;<input type="button" value="Редагувати" ></td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Modal &ndash;&gt;-->
+    <!--<div class="modal fade" id="addNew" role="dialog">-->
+        <!--<div class="modal-dialog">-->
+
+            <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <!--<h4 class="modal-title">Додати новину</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="file" ng-model="news.image" base-sixty-four-input required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Зображення:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.newNews.nameNewUa" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок UA:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.newNews.nameNewPl" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок PL:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.newNews.nameNewEng" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок EN:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.newNews.descriptionUa"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис UA:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.newNews.descriptionPl"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис PL:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.newNews.descriptionEng"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис EN:</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+
+                    <!--<button type="button" class="btn-material" ng-click="news.addNew(news.newNews.image)" data-dismiss="modal"><span>Додати</span>-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn-material btn-material_danger" data-dismiss="modal">-->
+                        <!--<span>Закрити</span></button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="modal fade" id="editNew" role="dialog">-->
+        <!--<div class="modal-dialog">-->
+            <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <!--<h4 class="modal-title">Змінити новину</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="file" ng-model="news.editImage" base-sixty-four-input required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Зображення:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.editNews.nameNewUa" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок UA:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.editNews.nameNewPl" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок PL:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<input class="input-material" type="text" ng-model="news.editNews.nameNewEng" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Заголовок EN:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.editNews.descriptionUa"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис UA:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.editNews.descriptionPl"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис PL:</label>-->
+                    <!--</div>-->
+                    <!--<div class="group">-->
+                        <!--<textarea class="input-material" type="text" ng-model="news.editNews.descriptionEng"-->
+                                  <!--required></textarea>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Опис EN:</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn-material" ng-click="news.changeNews()" data-dismiss="modal"><span>Зберегти</span>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
+<!--</div>-->
+<!--</div>-->

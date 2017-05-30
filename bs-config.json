@@ -1,0 +1,10 @@
+{
+  "port": 8080,
+  "files": ["./app/**/*.{html,htm,css,js,json}"],
+  "server": {
+    "baseDir": "./app",
+    "routes": {
+      "/js": "app/js/"
+
+    }}
+}

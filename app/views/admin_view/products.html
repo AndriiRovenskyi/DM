@@ -1,0 +1,462 @@
+<div class="products">
+    <h2>Продукти
+        <button type="button" class="btn btn-default btnRight btn-material btn-material_warring"
+                data-toggle="modal" data-target="#addProduct">Додати продукт
+        </button>
+    </h2>
+
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Назва Ua</th>
+            <th>Назва EN</th>
+            <th>Назва PL</th>
+            <th>Опис UA</th>
+            <th>Опис EN</th>
+            <th>Опис PL</th>
+            <th>Зображення</th>
+            <th>Видалити</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="prodl in prod.products | orderBy:sort ">
+            <td>{{prodl.nameCommoditiesUa}}</td>
+            <td>{{prodl.nameCommoditiesEng}}</td>
+            <td>{{prodl.nameCommoditiesPl}}</td>
+            <td ng-bind-html="prodl.descriptionUa"></td>
+            <td ng-bind-html="prodl.descriptionEng"></td>
+            <td ng-bind-html="prodl.descriptionPl"></td>
+            <td><img src="http://185.65.246.204:8081{{prodl.img}}" alt=""></td>
+            <td>
+                <button class="btn-material btn-material_danger" ng-click="prod.deleteProduct(prodl)"
+                        type="button"><span>Видалити</span></button>
+                <!--<button class="btn-material btn-material_warring" data-toggle="modal"-->
+                <!--data-target="#editProduct" type="button" ng-click="prod.editProduct(prodl)">-->
+                <!--<span>Редагувати</span>-->
+                <!--</button>-->
+
+
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProduct" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Додати Продукт</h4>
+                </div>
+                <div class="modal-body">
+                    <span>Категорія:</span>
+                    <select name="category" ng-model="prod.newProd.category">
+                        <option value={{categ.id}} ng-repeat="categ in prod.categories">{{categ.name}}</option>
+                    </select><br><br>
+                    <span>Підкатегорія:</span>
+                    <select name="subcategory" ng-model="prod.newProd.id_sub">
+                        <option value={{subcat.id}} ng-repeat="subcat in prod.subcategories | filter: prod.filterSub">
+                            {{subcat.nameSubUa}}
+                        </option>
+                    </select><br><br>
+
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesUa" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesUa:</label>
+                    </div>
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesEng" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesEng:</label>
+                    </div>
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesPl" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesPl:</label>
+                    </div>
+
+
+                    <div class="group">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionUa:</label>
+                        <div text-angular ng-model="prod.newProd.descriptionUa"></div>
+                    </div>
+                    <div class="group">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionEng:</label>
+                        <div text-angular ng-model="prod.newProd.descriptionEng"></div>
+                    </div>
+                    <div class="group">
+                        <label class="label">Опис продукту descriptionPl:</label>
+                        <div text-angular ng-model="prod.newProd.descriptionPl"></div>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    </div>
+
+                    <div class="group">
+                        <input class="input-material" type="file" ng-model="prod.img" base-sixty-four-input required>
+
+                        <!--<input class="input-material" type="text" ng-model="prod.newProd.img" required>-->
+                        <!--<span class="highlight"></span>-->
+                        <!--<span class="bar"></span>-->
+                        <!--<label>Ім’я Продукту img:</label>-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-material" ng-click="prod.addProduct()" data-dismiss="modal"><span>Додати</span>
+                    </button>
+                    <!--<button type="button" class="btn-material btn-material_danger" data-dismiss="modal">-->
+                    <!--<span>Закрити</span></button>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editProduct" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Редагувати Продукт</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="admin_select">
+                        <span>Категорія:</span>
+                        <select name="category" ng-model="prod.editProd.category">
+                            <option value={{categ.name}} ng-repeat="categ in prod.categories"> {{categ.name}}</option>
+                        </select>
+                    </div>
+                    <span>Підкатегорія:</span>
+                    <select name="subcategory" ng-model="prod.editProd.subcategory">
+                        <option value={{subcat.name}} ng-repeat="subcat in prod.subcategories">{{subcat.name}}</option>
+                    </select><br><br>
+
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesUa" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesUa:</label>
+                    </div>
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesEng" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesEng:</label>
+                    </div>
+                    <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesPl" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesPl:</label>
+                    </div>
+
+
+                    <div class="group">
+    <textarea class="input-material" type="text" ng-model="prod.editProd.descriptionUa"
+              required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionUa:</label>
+                    </div>
+                    <div class="group">
+    <textarea class="input-material" type="text" ng-model="prod.editProd.descriptionEng"
+              required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionEng:</label>
+                    </div>
+                    <div class="group">
+    <textarea class="input-material" type="text" ng-model="prod.editProd.descriptionPl"
+              required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionPl:</label>
+                    </div>
+
+
+                    <div class="group">
+                        <textarea class="input-material" type="text" ng-model="prod.editProd.img" required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту img:</label>
+                    </div>
+
+                    <div class="group">
+                        <textarea class="input-material" type="text" ng-model="prod.editProd.price" required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту price:</label>
+                    </div>
+                    <div class="group">
+    <textarea class="input-material" type="text" ng-model="prod.editProd.id_cat"
+              required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту id_cat:</label>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-material" ng-click="prod.saveChangeProd()" data-dismiss="modal"><span>Зберегти</span>
+                </button>
+                <button type="button" class="btn-material btn-material_danger" data-dismiss="modal"><span>Закрити</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+
+<!--<div class="container-fluid products">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-12 col-md-12">-->
+<!--<h2>Продукти-->
+<!--<button type="button" class="btn btn-default btnRight btn-material btn-material_warring"-->
+<!--data-toggle="modal" data-target="#addProduct">Додати продукт-->
+<!--</button>-->
+<!--</h2>-->
+<!--<div class="row">-->
+<!--<div class="col-lg-12 col-md-12 ">-->
+<!--<table class="table table-hover table-striped">-->
+<!--<thead class="thead-inverse">-->
+<!--<tr>-->
+<!--<th>Назва Ua</th>-->
+<!--<th>Назва EN</th>-->
+<!--<th>Назва PL</th>-->
+<!--<th>Опис UA</th>-->
+<!--<th>Опис EN</th>-->
+<!--<th>Опис PL</th>-->
+<!--<th>Зображення</th>-->
+<!--<th>Видалити</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tr ng-repeat="prodl in prod.products | orderBy:sort ">-->
+<!--<td>{{prodl.nameCommoditiesUa}}</td>-->
+<!--<td>{{prodl.nameCommoditiesEng}}</td>-->
+<!--<td>{{prodl.nameCommoditiesPl}}</td>-->
+<!--<td>{{prodl.descriptionUa}}</td>-->
+<!--<td>{{prodl.descriptionEng}}</td>-->
+<!--<td>{{prodl.descriptionPl}}</td>-->
+<!--<td><img src="http://185.65.246.204:8081{{prodl.img}}" alt=""></td>-->
+<!--<td>-->
+<!--<button class="btn-material btn-material_danger" ng-click="prod.deleteProduct(prodl)"-->
+<!--type="button"><span>Видалити</span></button>-->
+<!--&lt;!&ndash;<button class="btn-material btn-material_warring" data-toggle="modal"&ndash;&gt;-->
+<!--&lt;!&ndash;data-target="#editProduct" type="button" ng-click="prod.editProduct(prodl)">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>Редагувати</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="addProduct" role="dialog">-->
+<!--<div class="modal-dialog">-->
+
+<!--&lt;!&ndash; Modal content&ndash;&gt;-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--<h4 class="modal-title">Додати Продукт</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<span>Категорія:</span>-->
+<!--<select name="category" ng-model="prod.newProd.category">-->
+<!--<option value={{categ.id}} ng-repeat="categ in prod.categories">{{categ.name}}</option>-->
+<!--</select><br><br>-->
+<!--<span>Підкатегорія:</span>-->
+<!--<select name="subcategory" ng-model="prod.newProd.id_sub">-->
+<!--<option value={{subcat.id}} ng-repeat="subcat in prod.subcategories | filter: prod.filterSub">-->
+<!--{{subcat.nameSubUa}}-->
+<!--</option>-->
+<!--</select><br><br>-->
+
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesUa" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesEng" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesPl" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesPl:</label>-->
+<!--</div>-->
+
+
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.newProd.descriptionUa"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.newProd.descriptionEng"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.newProd.descriptionPl"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionPl:</label>-->
+<!--</div>-->
+
+<!--<div class="group">-->
+<!--<input class="input-material" type="file" ng-model="prod.img" base-sixty-four-input required>-->
+
+<!--&lt;!&ndash;<input class="input-material" type="text" ng-model="prod.newProd.img" required>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="highlight"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="bar"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Ім’я Продукту img:</label>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn-material" ng-click="prod.addProduct()" data-dismiss="modal"><span>Додати</span>-->
+<!--</button>-->
+<!--&lt;!&ndash;<button type="button" class="btn-material btn-material_danger" data-dismiss="modal">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>Закрити</span></button>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="editProduct" role="dialog">-->
+<!--<div class="modal-dialog">-->
+
+<!--&lt;!&ndash; Modal content&ndash;&gt;-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--<h4 class="modal-title">Редагувати Продукт</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<div class="admin_select">-->
+<!--<span>Категорія:</span>-->
+<!--<select name="category" ng-model="prod.editProd.category">-->
+<!--<option value={{categ.name}} ng-repeat="categ in prod.categories"> {{categ.name}}</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--<span>Підкатегорія:</span>-->
+<!--<select name="subcategory" ng-model="prod.editProd.subcategory">-->
+<!--<option value={{subcat.name}} ng-repeat="subcat in prod.subcategories">{{subcat.name}}</option>-->
+<!--</select><br><br>-->
+
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesUa" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesEng" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesPl" required>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Ім’я Продукту nameCommoditiesPl:</label>-->
+<!--</div>-->
+
+
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.descriptionUa"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionUa:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.descriptionEng"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionEng:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.descriptionPl"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту descriptionPl:</label>-->
+<!--</div>-->
+
+
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.img" required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту img:</label>-->
+<!--</div>-->
+
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.price" required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту price:</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<textarea class="input-material" type="text" ng-model="prod.editProd.id_cat"-->
+<!--required></textarea>-->
+<!--<span class="highlight"></span>-->
+<!--<span class="bar"></span>-->
+<!--<label>Опис продукту id_cat:</label>-->
+<!--</div>-->
+
+
+<!--</div>-->
+
+
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn-material" ng-click="prod.saveChangeProd()" data-dismiss="modal"><span>Зберегти</span>-->
+<!--</button>-->
+<!--<button type="button" class="btn-material btn-material_danger" data-dismiss="modal"><span>Закрити</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+<!--</div>-->

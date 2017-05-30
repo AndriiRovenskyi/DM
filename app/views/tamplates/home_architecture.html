@@ -1,0 +1,33 @@
+
+
+<div class="anim-fade">
+<!--<div class="anim-fade">-->
+<section class="architecture-categories">
+    <div class="container">
+        <div class="slick-container categories-container">
+            <slick infinite=false slides-to-show=4 slides-to-scroll=1 ng-if="arch.subcategories.length">
+                <div class="categories-block" ng-class="arch.currentSub == subcategory.id ? 'active-categories' : ''" ng-click="arch.currentSub = subcategory.id" ng-repeat="subcategory in arch.subcategories | filter: arch.filterSub">
+                    <img src="http://185.65.246.204:8081{{subcategory.img}}" alt="">
+                    <p>{{subcategory | translator:"nameSub"}}</p>
+                </div>
+            </slick>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="product-block">
+    <div class="container">
+        <div class="product" ng-repeat="product in arch.products | filter: arch.filterProducts" >
+            <a ui-sref="home.product({fireplaceId: product.id})" class="wrap-product" ng-click="scrollTop('anchor')">
+            <div class="main-categories-images"><img class="img" src="http://185.65.246.204:8081{{product.img}}" alt=""></div>
+                <div class="product-categories-title">{{product | translator:"nameCommodities"}}</div>
+            </a>
+        </div>
+    </div>
+</section>
+</div>

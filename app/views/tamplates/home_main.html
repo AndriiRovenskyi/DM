@@ -1,0 +1,70 @@
+<div class="anim-fade">
+<section class="main-image"><img src="images/big-image/main.png"></section>
+
+<section class="main-author">
+    <div class="container">
+        <div class="main-author-image"></div>
+        <div class="main-author-text">
+            <h3>{{allText.mainAuthorName}}</h3>
+            <p>{{allText.mainAuthorDescription}}</p>
+        </div>
+    </div>
+</section>
+
+<section class="line-box">
+    <div class="container">
+        <div class="line-dotted"></div>
+    </div>
+</section>
+
+<section class="publish">
+    <div class="container">
+        <div class="publish-title">{{allText.mainPublishTitle}}</div>
+        <div class="publish-text">
+            <div class="publish-text-column">
+                <p>{{allText.mainPublishDescriptionFirst}}</p>
+                <p>{{allText.mainPublishDescriptionSecond}}</p>
+                <p>{{allText.mainPublishDescriptionThird}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-image-box">
+    <div class="container">
+        <div class="main-image-smaller"></div>
+    </div>
+</section>
+
+<section class="line-box">
+    <div class="container">
+        <div class="line-dotted"></div>
+    </div>
+</section>
+
+<section class="main-categories">
+    <div class="container">
+        <div class="main-categories-type" ui-sref="home.fireplace" ng-click="scrollTop('anchor')">
+            <div class="main-categories-title">{{allText.mainFiresTitle}}</div>
+            <div class="main-categories-images"><img src="images/image-categories/fireplaces.png"
+                                                     alt="fireplaces"></div>
+            <div class="main-categories-text">{{allText.mainFiresDescription}}
+            </div>
+        </div>
+        <div class="main-categories-type" ui-sref="home.sculpture" ng-click="scrollTop('anchor')">
+            <div class="main-categories-title">{{allText.mainSculpturesTitle}}</div>
+            <div class="main-categories-images"><img src="images/image-categories/sculpture.png"
+                                                     alt="sculpture"></div>
+            <div class="main-categories-text">{{allText.mainSculpturesDescription}}
+            </div>
+        </div>
+        <div class="main-categories-type" ui-sref="home.architecture" ng-click="scrollTop('anchor')">
+            <div class="main-categories-title">{{allText.mainArchitecturesTitle}}</div>
+            <div class="main-categories-images"><img src="images/image-categories/architecture.png"
+                                                     alt="architecture"></div>
+            <div class="main-categories-text">{{allText.mainArchitecturesDescription}}
+            </div>
+        </div>
+    </div>
+</section>
+</div>

@@ -1,0 +1,57 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-box mini-menu">
+            <ul>
+                <li><a ui-sref="home.main" ng-click="scrollTop('anchor')">{{allText.menuItemMain}}</a></li>
+                <li><a ui-sref="home.news" ng-click="scrollTop('anchor')">{{allText.menuItemNews}}</a></li>
+                <li><a ui-sref="home.fireplace" ng-click="scrollTop('anchor')">{{allText.menuItemFires}}</a></li>
+                <li><a ui-sref="home.sculpture" ng-click="scrollTop('anchor')">{{allText.menuItemSculptures}}</a></li>
+                <li><a ui-sref="home.architecture" ng-click="scrollTop('anchor')">{{allText.menuItemArchitectures}}</a></li>
+                <li><a ui-sref="home.contact" ng-click="scrollTop('anchor')">{{allText.menuItemContacts}}</a></li>
+            </ul>
+        </div>
+        <div class="footer-box slogan">
+            <h3 class="footer-title">{{allText.footerTextTitle}}</h3>
+            <div class="footer-title-line"></div>
+            <p class="footer-title-text">{{allText.footerTextDescription}}</p>
+        </div>
+        <div class="footer-box contacts">
+            <h3 class="footer-title">{{allText.footerTitle}}</h3>
+            <div class="footer-title-line"></div>
+            <div class="footer-place contacts-text"><p>{{allText.footerAddress}}</p></div>
+            <div class="footer-phone contacts-text"><p>+380 999 99 99 99</p></div>
+            <div class="footer-email contacts-text"><p>namemail@mail.com</p></div>
+            <div class="send contacts-text"><a ui-sref="home.contact"  ng-click="scrollTop('anchor')">{{allText.footerBtn}}</a></div>
+        </div>
+        <div class="footer-box mini-news">
+            <h3 class="footer-title">{{allText.footerNews}}</h3>
+            <div class="footer-title-line"></div>
+            <div class="mini-news-block" ui-sref="home.newsdesc({newsId: news.id})" ng-repeat="news in news" ng-click="scrollTop('anchor')">
+                <!--<a ui-sref="home.newsdesc({newsId: news.id})" class="wrap-product">-->
+                <div class="mini-news-block-images"><img src="http://185.65.246.204:8081{{news.img}}" alt=""></div>
+                <div class="mini-news-block-contain">
+                    <div class="mini-news-block-title">{{news | translator:"nameNew"}}</div>
+                    <div class="mini-news-block-text">
+                        {{news | translator:"description"}}
+                    </div>
+                </div>
+                <div class="mini-news-block-arrow"></div>
+                <!--</a>-->
+            </div>
+            <!--<div class="mini-news-block" >-->
+                <!--<div class="mini-news-block-images"><img src="images/news-images/2.png" alt=""></div>-->
+                <!--<div class="mini-news-block-contain">-->
+                    <!--<div class="mini-news-block-title">Грегор Замза обнаружил</div>-->
+                    <!--<div class="mini-news-block-text">Проснувшись однажды утром после беспокойного сна, Грегор Замза-->
+                        <!--обнаружил, что он у себя в постели превратился в страшное насекомое. Лежа на панцирнотвердой-->
+                        <!--спине, он видел, стоило ему приподнять голову, свой коричневый, выпуклый, разделенный-->
+                        <!--дугообразными чешуйками живот, на верхушке которого еле держалось готовое вот-вот-->
+                        <!--окончательно сползти одеяло.-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="mini-news-block-arrow"></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</footer>
+<div class="footer-copyright" ><p>© copyright 2017</p></div>
