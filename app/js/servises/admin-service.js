@@ -7,21 +7,24 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
             }
         },
         checkLogin: function (username, password) {
-            for (i in users) {
-                if (username == users[i].name && password == users[i].password) {
-                    $state.transitionTo('admin');
-                    localStorage.setItem('admin', 'true');
-                } else {
-                    alert('Wrong password');
-                }
-            }
+            $http({
+                url: "http://localhost:8081/signIn",
+                method: "POST",
+                data: { login: username, password:password}
+            }).then(function (data) {
+                if(data.data) {
+                    sessionStorage.setItem("token", data.data.token);
+                    $state.go("admin");
+                }else
+                    alert("Wrong password");
+            })
         },
 
 // SUBCATEGORIES
         getSubcategories: function () {
             return $http({
                 url: "http://185.65.246.204:8081/subCategory/get",
-                method: "GET"
+                method: "GET",
             })
         },
         changeSubcategory: function (subcategory) {
@@ -39,9 +42,10 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
 
         addSubcategory: function (subcategory) {
             return $http({
-                url: "http://185.65.246.204:8081/subCategory/add",
+                url: "http://localhost:8081/subCategory/add",
                 method: "POST",
-                data: subcategory
+                data: subcategory,
+                headers: sessionStorage.getItem("token")
             })
         },
 

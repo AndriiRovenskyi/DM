@@ -1,25 +1,42 @@
-<!--anim-slide-below-fade-->
-<div class="anim-fade">
+<!--&lt;!&ndash;anim-slide-below-fade&ndash;&gt;-->
 <!--<div class="anim-fade">-->
-<section class="fireplaces-categories">
-    <div class="container">
-        <div class="slick-container categories-container">
-            <slick infinite=false slides-to-show=4 slides-to-scroll=1 ng-if="fire.subcategories.length">
+<!--&lt;!&ndash;<div class="anim-fade">&ndash;&gt;-->
+<!--<section class="fireplaces-categories">-->
+    <!--<div class="container">-->
+        <!--<div class="slick-container categories-container">-->
+            <!--<slick infinite=false slides-to-show=4 slides-to-scroll=1 ng-if="fire.subcategories.length">-->
+                <!--<div class="categories-block" ng-class="fire.currentSub == subcategory.id ? 'active-categories' : 'n'"-->
+                     <!--ng-click="fire.currentSub = subcategory.id"-->
+                     <!--ng-repeat="subcategory in fire.subcategories | filter: fire.filterSub"><img-->
+                        <!--src="http://185.65.246.204:8081{{subcategory.img}}"-->
+                        <!--alt="">-->
+
+                    <!--<p>{{subcategory | translator:"nameSub"}}</p>-->
+                <!--</div>-->
+            <!--</slick>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+<div class="anim-fade">
+    <section class="fireplaces-categories">
+        <div class="container">
+            <div class="categories-container">
                 <div class="categories-block" ng-class="fire.currentSub == subcategory.id ? 'active-categories' : 'n'"
-                     ng-click="fire.currentSub = subcategory.id"
+                     ng-click="fire.currentSub = subcategory.id;scrollToProducts('anchor2')"
                      ng-repeat="subcategory in fire.subcategories | filter: fire.filterSub"><img
                         src="http://185.65.246.204:8081{{subcategory.img}}"
                         alt="">
 
                     <p>{{subcategory | translator:"nameSub"}}</p>
                 </div>
-            </slick>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
 
-<section class="product-block">
+
+<section class="product-block" id="anchor2">
     <div class="container">
         <div class="product" ng-repeat="product in fire.products | filter: fire.filterProducts">
             <a ui-sref="home.product({fireplaceId: product.id})" class="wrap-product" ng-click="scrollTop('anchor')">

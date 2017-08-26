@@ -1,4 +1,4 @@
-app.controller('subcategoryCtrl',['AdminService',function (AdminService) {
+app.controller('subcategoryCtrl',['AdminService', '$state',function (AdminService, $state) {
     var vm=this;
     vm.subcategories;
     // vm.category
@@ -7,7 +7,12 @@ app.controller('subcategoryCtrl',['AdminService',function (AdminService) {
     vm.addSubcategory=function () {
         vm.newSubcategory.img = vm.img.base64;
         AdminService.addSubcategory(vm.newSubcategory).then(function (data) {
-            vm.subcategories.push(data.data[0]);
+            if(data.data){
+                vm.subcategories.push(data.data[0]);
+            }else {
+                $state.go('login')
+            }
+
         });
         vm.newSubcategory={};
     }
@@ -52,7 +57,8 @@ app.controller('subcategoryCtrl',['AdminService',function (AdminService) {
 
     vm.init=function () {
         AdminService.getSubcategories().then(function (data) {
-            vm.subcategories = data.data;
+                vm.subcategories = data.data;
+
         });
         vm.categories = AdminService.getCategories().filter(function (el) {
             return el.id!=3

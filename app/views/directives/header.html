@@ -11,7 +11,7 @@
         <div class="top-header-lang">
             <div class="lang">
                 <ul>
-                    <li class="lang-en" ng-class="language!='Eng' ? 'disable' : 'x'"><a href="" ng-click="changeLanguage('Eng')">En</a></li>
+                    <li class="lang-en" ng-class="language!='Eng' ? 'disable' : 'x'"><a href="" ng-click="changeLanguage('Eng')">EN</a></li>
                     <li class="lang-ua" ng-class="language!='Ua' ? 'disable' : 'x'"><a href="" ng-click="changeLanguage('Ua')">UA</a></li>
                     <li class="lang-pl" ng-class="language!='Pl' ? 'disable' : 'x'"><a href="" ng-click="changeLanguage('Pl')">PL</a></li>
                     <!--<li class="lang-ru disable"><a href="#" ng-click="changeLanguage('RU')">RU</a></li>-->
@@ -25,8 +25,8 @@
 <header id="header" class="header-element">
     <div class="header-anchor"></div>
     <div class="header header-container" ng-class='headerThin'>
-        <div class="container">
-            <div class="top-logo" ng-class='logoSmall'></div>
+        <div class="container fix_safari">
+            <div class="top-logo" ng-class='logoSmall' ui-sref="home.main"></div>
             <nav class="top-menu">
                 <ul>
                     <li><a ui-sref="home.main"  ng-click="scrollTop('anchor')">{{allText.menuItemMain}}</a></li>
