@@ -42,4 +42,4 @@ app.factory('UserService', ['$http', function ($http, $state, $rootScope) {
 
 }]);
 
-var url = "http://dmstone.com.ua"
+var url = "http://185.65.246.204:8081"
