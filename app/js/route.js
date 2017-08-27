@@ -37,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         // subCategory in admin
         .state('admin.subCategory', {
             url: 'subCategory',
-            templateUrl: 'views/admin_view/subcategory.html',
+            templateUrl: 'views/admin_view/subCategory.html',
             controller: 'subcategoryCtrl',
             controllerAs: 'sub'
         })
