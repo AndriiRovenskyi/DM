@@ -8,7 +8,7 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
         },
         checkLogin: function (username, password) {
             $http({
-                url: "http://localhost:8081/signIn",
+                url: "http://185.65.246.204:8081/signIn",
                 method: "POST",
                 data: { login: username, password:password}
             }).then(function (data) {
@@ -42,7 +42,7 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
 
         addSubcategory: function (subcategory) {
             return $http({
-                url: "http://localhost:8081/subCategory/add",
+                url: "http://185.65.246.204:8081/subCategory/add",
                 method: "POST",
                 data: subcategory,
                 headers: sessionStorage.getItem("token")
