@@ -56,6 +56,7 @@ app.controller('subcategoryCtrl',['AdminService', '$state',function (AdminServic
     }
 
     vm.init=function () {
+        AdminService.checkAdmin();
         AdminService.getSubcategories().then(function (data) {
                 vm.subcategories = data.data;
 

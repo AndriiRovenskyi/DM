@@ -41,6 +41,7 @@ function myFunc(AdminService) {
         vm.editNews=obj;
     };
     vm.init = function () {
+        AdminService.checkAdmin();
         AdminService.getNewies().then(function (data) {
             vm.newies1 = data.data;
 

@@ -1,51 +1,82 @@
 app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $state, $rootScope) {
     return {
 
+        logOut: function () {
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem('admin');
+        },
         checkAdmin: function () {
-            if (localStorage.getItem('admin') != 'true') {
+            if (sessionStorage.getItem('admin') != 'true') {
                 $state.go('login');
             }
         },
         checkLogin: function (username, password) {
             $http({
-                url: "http://185.65.246.204:8081/signIn",
+                url: url +"/signIn",
                 method: "POST",
                 data: { login: username, password:password}
             }).then(function (data) {
+                // debugger
                 if(data.data) {
                     sessionStorage.setItem("token", data.data.token);
+                    sessionStorage.setItem('admin','true')
                     $state.go("admin");
                 }else
                     alert("Wrong password");
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
 
 // SUBCATEGORIES
         getSubcategories: function () {
             return $http({
-                url: "http://185.65.246.204:8081/subCategory/get",
+                url: url +"/subCategory/get",
                 method: "GET",
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
         changeSubcategory: function (subcategory) {
             return $http({
-                url: "http://185.65.246.204:8081/subCategory/update",
+                url: url +"/subCategory/update",
                 method: "PUT",
                 data: subcategory
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         }, deleteSubcategory: function (id) {
             return $http({
-                url: "http://185.65.246.204:8081/subCategory/delete/" + id,
+                url: url +"/subCategory/delete/" + id,
                 method: "DELETE"
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
 
         addSubcategory: function (subcategory) {
             return $http({
-                url: "http://185.65.246.204:8081/subCategory/add",
+                url: url +"/subCategory/add",
                 method: "POST",
                 data: subcategory,
                 headers: sessionStorage.getItem("token")
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
 
@@ -53,8 +84,13 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
 
         getProduct: function () {
             return $http({
-                url: "http://185.65.246.204:8081/commodity/get",
+                url: url +"/commodity/get",
                 method: "GET"
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
         changeProduct: function (product) {
@@ -66,15 +102,25 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
         },
         deleteProduct: function (product) {
             return $http({
-                url: "http://185.65.246.204:8081/commodity/delete/" + product.id,
+                url: url +"/commodity/delete/" + product.id,
                 method: "DELETE"
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
         addProduct: function (product) {
             return $http({
-                url: "http://185.65.246.204:8081/commodity/add",
+                url: url +"/commodity/add",
                 method: "POST",
                 data: product
+            }).catch(function (err) {
+                if(err.status == 401){
+                    alert("Будь-ласка авторезуйтесь");
+                    $state.go('login')
+                }
             })
         },
 
@@ -85,14 +131,14 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
 
         addNewies: function (news) {
             return $http({
-                url: "http://185.65.246.204:8081/news/add",
+                url: url +"/news/add",
                 method: "POST",
                 data: news
             });
         },
     getNewies:function() {
         return $http({
-            url: "http://185.65.246.204:8081/news/get",
+            url: url +"/news/get",
             method: "GET"
         });
     }
@@ -100,7 +146,7 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
     changeNewies:function(news) {
 
         return $http({
-            url: "http://185.65.246.204:8081/news/update",
+            url: url +"/news/update",
             method: "PUT",
             data: news
         })
@@ -108,7 +154,7 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
     ,
     deleteNewies:function(id) {
         return $http({
-            url: "http://185.65.246.204:8081/news/delete/" + id,
+            url: url +"/news/delete/" + id,
             method: "DELETE"
         });
     },
@@ -138,3 +184,6 @@ var categories = [{
     name: 'Архітектура',
     id: 2
 }]
+
+var url = 'http://localhost:8081';
+// var url = 'http://185.65.246.204:8081';

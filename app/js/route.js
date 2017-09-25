@@ -121,8 +121,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'views/admin_view/news.html',
         controller: 'myNewsCtrl',
         controllerAs: 'news'
-    })
+    }).state("otherwise", { url : '/'})
 
 
 
+});
+
+app.run(function($http) {
+    var token = sessionStorage.getItem("token") ? sessionStorage.getItem("token") : '';
+    debugger
+    $http.defaults.headers.common.Authorization = token;
 });

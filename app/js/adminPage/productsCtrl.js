@@ -43,6 +43,7 @@ app.controller('productsCtrl',['AdminService',function (AdminService) {
     }
 
     vm.init=function () {
+        AdminService.checkAdmin();
         vm.categories=AdminService.getCategories();
         // vm.newProd.category = 1
         AdminService.getSubcategories().then(function (data) {

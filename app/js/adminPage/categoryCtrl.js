@@ -22,6 +22,7 @@ app.controller('categoryCtrl',['AdminService', function (AdminService) {
     }
 
     vm.init=function () {
+        AdminService.checkAdmin();
         vm.categories=AdminService.getCategories();
     }
     vm.init();
