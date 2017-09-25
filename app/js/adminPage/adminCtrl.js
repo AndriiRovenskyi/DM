@@ -10,7 +10,6 @@ app.controller('adminCtrl',['AdminService','$state', function (AdminService,$sta
 
     vm.logOut = function () {
         AdminService.logOut();
-        debugger
     }
 
     vm.init();

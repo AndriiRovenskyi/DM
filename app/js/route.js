@@ -129,6 +129,5 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 app.run(function($http) {
     var token = sessionStorage.getItem("token") ? sessionStorage.getItem("token") : '';
-    debugger
     $http.defaults.headers.common.Authorization = token;
 });

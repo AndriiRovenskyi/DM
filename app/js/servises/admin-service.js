@@ -16,7 +16,6 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
                 method: "POST",
                 data: { login: username, password:password}
             }).then(function (data) {
-                // debugger
                 if(data.data) {
                     sessionStorage.setItem("token", data.data.token);
                     sessionStorage.setItem('admin','true')
@@ -169,10 +168,6 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
 
 }]);
 
-var users = [{
-    name: 'admin',
-    password: 'admin'
-}];
 
 var categories = [{
     name: 'Каміни',
@@ -185,5 +180,4 @@ var categories = [{
     id: 2
 }]
 
-var url = 'http://localhost:8081';
-// var url = 'http://185.65.246.204:8081';
+var url = 'http://185.65.246.204:8081';
