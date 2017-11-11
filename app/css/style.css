@@ -1472,3 +1472,18 @@ label {
 .ta-hidden-input{
     display: none !important;
 }
+
+.change-password{
+    display: flex;
+    justify-content: center;
+}
+
+.container-titles-admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container-titles-admin p{
+    font-weight: 900;
+}

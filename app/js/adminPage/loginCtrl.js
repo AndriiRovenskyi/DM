@@ -9,5 +9,8 @@ app.controller('loginCtrl',['AdminService', function (AdminService) {
         AdminService.checkLogin(vm.username, vm.password);
     }
 
+    vm.updatePassword = function () {
+        AdminService.updatePassword(vm.oldUsername, vm.oldPassword, vm.newPassword);
+    }
 
 }])

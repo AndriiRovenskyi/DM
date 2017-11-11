@@ -7,6 +7,34 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="my.password">
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="my.submit()">Sign in</button>
+        <input type="button" value="Change password" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#editPassword">
     </form>
 </div>
 
+<div class="modal fade" id="editPassword" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change password</h4>
+            </div>
+            <div class="modal-body change-password">
+                <div class="container-titles-admin">
+                    <p>Login:</p>
+                    <p>Old password:</p>
+                    <p>New password:</p>
+                </div>
+                <div calss="container-inputs-admin">
+                    <div><input type="text" ng-model="my.oldUsername" class="form-control"></div>
+                    <div><input type="password" ng-model="my.oldPassword" class="form-control"></div>
+                    <div><input type="password" ng-model="my.newPassword" class="form-control"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="my.updatePassword()" data-dismiss="modal">Change</button>
+            </div>
+        </div>
+
+    </div>
+</div>

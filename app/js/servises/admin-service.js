@@ -13,12 +13,13 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
         checkLogin: function (username, password) {
             $http({
                 url: url +"/signIn",
+                // url: url +"/signIn",
                 method: "POST",
                 data: { login: username, password:password}
             }).then(function (data) {
                 if(data.data) {
                     sessionStorage.setItem("token", data.data.token);
-                    sessionStorage.setItem('admin','true')
+                    sessionStorage.setItem('admin','true');
                     $state.go("admin");
                 }else
                     alert("Wrong password");
@@ -27,6 +28,18 @@ app.factory('AdminService', ['$http','$state','$rootScope', function ($http, $st
                     alert("Будь-ласка авторезуйтесь");
                     $state.go('login')
                 }
+            })
+        },
+        updatePassword: function (username, password, newPassword) {
+            $http({
+                url: url +"/update-password",
+                method: "PUT",
+                data: { login: username, password:password, newPassword: newPassword}
+            }).then(function (data) {
+                if(data.data) {
+                   alert("Password was changed")
+                }else
+                    alert("Wrong login or password");
             })
         },
 
@@ -181,3 +194,4 @@ var categories = [{
 }]
 
 var url = 'http://185.65.246.204:8081';
+// var url = 'http://localhost:8081';

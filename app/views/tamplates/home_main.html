@@ -20,12 +20,10 @@
 <section class="publish">
     <div class="container">
         <div class="publish-title">{{allText.mainPublishTitle}}</div>
-        <div class="publish-text">
-            <div class="publish-text-column">
-                <p>{{allText.mainPublishDescriptionFirst}}</p>
-                <p>{{allText.mainPublishDescriptionSecond}}</p>
-                <p>{{allText.mainPublishDescriptionThird}}</p>
-            </div>
+        <div class="publish-text-container">
+                <p><span class="publish-text-column_title">{{allText.mainPublishTitleFirst}}</span>{{allText.mainPublishDescriptionFirst}}</p>
+                <p><span class="publish-text-column_title">{{allText.mainPublishTitleSecond}}</span>{{allText.mainPublishDescriptionSecond}}</p>
+                <p><span class="publish-text-column_title">{{allText.mainPublishTitleThird}}</span>{{allText.mainPublishDescriptionThird}}</p>
         </div>
     </div>
 </section>
@@ -43,7 +41,7 @@
 </section>
 
 <section class="main-categories">
-    <div class="container">
+    <div class="container-categories">
         <div class="main-categories-type" ui-sref="home.fireplace" ng-click="scrollTop('anchor')">
             <div class="main-categories-title">{{allText.mainFiresTitle}}</div>
             <div class="main-categories-images"><img src="images/image-categories/fireplaces.png"
