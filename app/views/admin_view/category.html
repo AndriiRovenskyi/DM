@@ -6,6 +6,7 @@
                 <table>
                     <tr>
                         <th class="id" ng-click="sort='id'">ID</th>
+                        <th class="name" ng-click="sort='name'">NameSubRU</th>
                         <th class="name" ng-click="sort='name'">NameSubUA</th>
                         <th class="name" ng-click="sort='name'">NameSubEng</th>
                         <th class="name" ng-click="sort='name'">NameSubPL</th>
@@ -15,6 +16,7 @@
                     </tr>
                     <tr ng-repeat="categ in cat.categories | orderBy:sort">
                         <td>{{categ.id}}</td>
+                        <td>{{categ.nameSubRU}}</td>
                         <td>{{categ.nameSubUA}}</td>
                         <td>{{categ.nameSubEng}}</td>
                         <td>{{categ.nameSubPL}}</td>

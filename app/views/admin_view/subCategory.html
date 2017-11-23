@@ -10,6 +10,7 @@
         <tr>
             <th class="id" ng-click="sort='id'">ID</th>
             <!--<th ng-click="sort='category'">Категорія</th>-->
+            <th ng-click="sort='name'">Назва RU</th>
             <th ng-click="sort='name'">Назва UA</th>
             <th ng-click="sort='name'">Назва EN</th>
             <th ng-click="sort='name'">Назва PL</th>
@@ -22,6 +23,7 @@
         <tr ng-repeat="subcat in sub.subcategories | filter: sub.withOut">
             <td>{{subcat.id}}</td>
             <!--<td>{{subcat.category}}</td>-->
+            <td>{{subcat.nameSubRu}}</td>
             <td>{{subcat.nameSubUa}}</td>
             <td>{{subcat.nameSubEng}}</td>
             <td>{{subcat.nameSubPl}}</td>
@@ -57,6 +59,12 @@
     <option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
     </select><br><br>
 
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubRu" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubRu:</label>
+    </div>
     <div class="group">
     <input class="input-material" type="text" ng-model="sub.newSubcategory.nameSubUa" required>
     <span class="highlight"></span>
@@ -108,6 +116,12 @@
     <select name="category" ng-model="sub.editSubcat.id_cat">
     <option value={{categ.id}} ng-repeat="categ in sub.categories">{{categ.name}}</option>
     </select><br><br>
+    <div class="group">
+    <input class="input-material" type="text" ng-model="sub.editSubcat.nameSubRu" required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Ім’я підкатегорії nameSubRu:</label>
+    </div>
     <div class="group">
     <input class="input-material" type="text" ng-model="sub.editSubcat.nameSubUa" required>
     <span class="highlight"></span>

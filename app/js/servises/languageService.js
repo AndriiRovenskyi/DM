@@ -18,6 +18,12 @@ app.factory('LanguageService', function ($http) {
                 url: "/js/dataLanguage/EN.json",
                 method: "GET"
             })
+        },
+        getRU:function () {
+            return $http({
+                url: "/js/dataLanguage/RU.json",
+                method: "GET"
+            })
         }
 
     }})

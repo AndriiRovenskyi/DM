@@ -23,6 +23,11 @@ app.directive('homeHeader', function($rootScope,$http,LanguageService,$window) {
                     LanguageService.getEN().then(function (data) {
                         $rootScope.allText=data.data;
                     });
+                };
+                if(lang=="Ru"){
+                    LanguageService.getRU().then(function (data) {
+                        $rootScope.allText=data.data;
+                    });
                 }
             };
             scope.currentTitle=function() {

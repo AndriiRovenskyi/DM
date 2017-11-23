@@ -8,6 +8,7 @@
     <table class="table table-hover">
         <thead class="thead-inverse">
         <tr>
+            <th>Назва Ru</th>
             <th>Назва Ua</th>
             <th>Назва EN</th>
             <th>Назва PL</th>
@@ -20,9 +21,11 @@
         </thead>
         <tbody>
         <tr ng-repeat="prodl in prod.products | orderBy:sort ">
+            <td>{{prodl.nameCommoditiesRu}}</td>
             <td>{{prodl.nameCommoditiesUa}}</td>
             <td>{{prodl.nameCommoditiesEng}}</td>
             <td>{{prodl.nameCommoditiesPl}}</td>
+            <td ng-bind-html="prodl.descriptionRu"></td>
             <td ng-bind-html="prodl.descriptionUa"></td>
             <td ng-bind-html="prodl.descriptionEng"></td>
             <td ng-bind-html="prodl.descriptionPl"></td>
@@ -31,8 +34,8 @@
                 <button class="btn-material btn-material_danger" ng-click="prod.deleteProduct(prodl)"
                         type="button"><span>Видалити</span></button>
                 <button class="btn-material btn-material_warring" data-toggle="modal"
-                data-target="#editProduct" type="button" ng-click="prod.editProduct(prodl)">
-                <span>Редагувати</span>
+                        data-target="#editProduct" type="button" ng-click="prod.editProduct(prodl)">
+                    <span>Редагувати</span>
                 </button>
 
 
@@ -64,6 +67,12 @@
                     </select><br><br>
 
                     <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesRu" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesRu:</label>
+                    </div>
+                    <div class="group">
                         <input class="input-material" type="text" ng-model="prod.newProd.nameCommoditiesUa" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -83,6 +92,12 @@
                     </div>
 
 
+                    <div class="group">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionRu:</label>
+                        <div text-angular ng-model="prod.newProd.descriptionRu"></div>
+                    </div>
                     <div class="group">
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -143,6 +158,12 @@
                     </select><br><br>
 
                     <div class="group">
+                        <input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesRu" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ім’я Продукту nameCommoditiesRu:</label>
+                    </div>
+                    <div class="group">
                         <input class="input-material" type="text" ng-model="prod.editProd.nameCommoditiesUa" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -162,6 +183,13 @@
                     </div>
 
 
+                    <div class="group">
+    <textarea class="input-material" type="text" ng-model="prod.editProd.descriptionRu"
+              required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Опис продукту descriptionRu:</label>
+                    </div>
                     <div class="group">
     <textarea class="input-material" type="text" ng-model="prod.editProd.descriptionUa"
               required></textarea>
